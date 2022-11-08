@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="option_margin">4dp</dimen>
+    <dimen name="option_elevation">16dp</dimen>
+    <dimen name="option_width">0dp</dimen>
+    <dimen name="option_height">64dp</dimen>
+    <dimen name="option_card_radius">16dp</dimen>
+    <dimen name="text_size">32sp</dimen>
+</resources>
