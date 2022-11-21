@@ -207,7 +207,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cv_left_number">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvAnswersProgress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="8dp"
@@ -220,7 +220,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ProgressBar
-            android:id="@+id/progressBar2"
+            android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

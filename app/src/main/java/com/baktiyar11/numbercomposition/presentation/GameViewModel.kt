@@ -21,7 +21,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     private var timer: CountDownTimer? = null
     private val context = application
 
-    private val repository = GameRepositoryImpl
+    private val repository = GameRepositoryImpl()
 
     private val generateQuestionUseCase = GenerateQuestionUseCase(repository = repository)
     private val getGameSettingsUseCase = GetGameSettingsUseCase(repository = repository)
@@ -54,9 +54,11 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     private var countOfQuestion = 0
 
     fun startGame(level: Level) {
-        getGameSettings(level)
+        this.level = level
+        getGameSettings()
         startTimer()
         generateQuestion()
+        updateProgress()
     }
 
     fun chooseAnswer(number: Int) {
@@ -84,8 +86,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         countOfQuestion++
     }
 
-    private fun getGameSettings(level: Level) {
-        this.level = level
+    private fun getGameSettings() {
         this.gameSettings = getGameSettingsUseCase(level)
         _minPercent.value = gameSettings.minPercentOfRightAnswers
     }

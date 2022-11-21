@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.baktiyar11.numbercomposition.R
+import androidx.navigation.fragment.findNavController
 import com.baktiyar11.numbercomposition.databinding.FragmentChooseLevelBinding
 import com.baktiyar11.numbercomposition.domain.entity.Level
 
@@ -19,7 +19,7 @@ class ChooseLevelFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentChooseLevelBinding.inflate(layoutInflater)
+        _binding = FragmentChooseLevelBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -35,17 +35,13 @@ class ChooseLevelFragment : Fragment() {
         btnLevelHard.setOnClickListener { launchGameFragment(Level.HARD) }
     }
 
-    private fun launchGameFragment(level: Level) = requireActivity()
-        .supportFragmentManager.beginTransaction()
-        .replace(R.id.main_container, GameFragment.newInstance(level = level))
-        .addToBackStack(GameFragment.NAME).commit()
+    private fun launchGameFragment(level: Level) {
+        findNavController().navigate(
+            ChooseLevelFragmentDirections.actionChooseLevelFragmentToGameFragment(level))
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        fun newInstance(): ChooseLevelFragment = ChooseLevelFragment()
     }
 }

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.baktiyar11.numbercomposition.R
+import androidx.navigation.fragment.findNavController
 import com.baktiyar11.numbercomposition.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment : Fragment() {
@@ -24,17 +24,15 @@ class WelcomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.apply {
-            btnUnderstand.setOnClickListener {
-                launchChooseLevelFragment()
-            }
-        }
+        action()
     }
 
-    private fun launchChooseLevelFragment() = requireActivity()
-        .supportFragmentManager.beginTransaction()
-        .replace(R.id.main_container, ChooseLevelFragment.newInstance())
-        .addToBackStack(null).commit()
+    private fun action() = binding.btnUnderstand.setOnClickListener {
+        launchChooseLevelFragment()
+    }
+
+    private fun launchChooseLevelFragment() = findNavController()
+        .navigate(WelcomeFragmentDirections.actionWelcomeFragmentToChooseLevelFragment())
 
     override fun onDestroyView() {
         super.onDestroyView()
