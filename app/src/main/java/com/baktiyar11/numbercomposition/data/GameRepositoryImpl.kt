@@ -8,10 +8,7 @@ import kotlin.math.max
 import kotlin.math.min
 import kotlin.random.Random
 
-object GameRepositoryImpl : GameRepository {
-
-    private const val MIN_SUM_VALUE = 2
-    private const val MIN_ANSWER_VALUE = 1
+class GameRepositoryImpl : GameRepository {
 
     override fun generateQuestion(maxSumValue: Int, countOfOptions: Int): Question {
         val sum = Random.nextInt(MIN_SUM_VALUE, maxSumValue + 1)
@@ -21,10 +18,7 @@ object GameRepositoryImpl : GameRepository {
         options.add(rightAnswer)
         val from = max(rightAnswer - countOfOptions, MIN_ANSWER_VALUE)
         val to = min(maxSumValue, rightAnswer + countOfOptions)
-        when (options.size < countOfOptions) {
-            options.add(Random.nextInt(from, to)) -> {}
-            else -> {}
-        }
+        while (options.size < countOfOptions) options.add(Random.nextInt(from, to))
         return Question(sum, visibleNumber, options.toList())
     }
 
@@ -34,8 +28,13 @@ object GameRepositoryImpl : GameRepository {
         Level.EASY -> GameSettings(maxSumValue = 10,
             minCountOfRightAnswers = 10, minPercentOfRightAnswers = 70, gameTimeInSecond = 60)
         Level.NORMAL -> GameSettings(maxSumValue = 20,
-            minCountOfRightAnswers = 20, minPercentOfRightAnswers = 80, gameTimeInSecond = 50)
+            minCountOfRightAnswers = 20, minPercentOfRightAnswers = 80, gameTimeInSecond = 40)
         Level.HARD -> GameSettings(maxSumValue = 30,
             minCountOfRightAnswers = 30, minPercentOfRightAnswers = 90, gameTimeInSecond = 40)
+    }
+
+    private companion object {
+        private const val MIN_SUM_VALUE = 2
+        private const val MIN_ANSWER_VALUE = 1
     }
 }

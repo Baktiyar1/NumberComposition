@@ -9,6 +9,5 @@ data class Question(
     val visibleNumber: Int,
     val options: List<Int>,
 ) : Parcelable {
-
     val rightAnswer: Int get() = sum - visibleNumber
 }
