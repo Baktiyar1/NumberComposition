@@ -7,7 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class Question(
     val sum: Int,
     val visibleNumber: Int,
+    val rightAnswer: Int,
     val options: List<Int>,
-) : Parcelable {
-    val rightAnswer: Int get() = sum - visibleNumber
-}
+) : Parcelable

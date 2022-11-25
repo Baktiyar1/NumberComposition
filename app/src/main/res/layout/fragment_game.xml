@@ -4,66 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/game_fragment_background"
     tools:context=".presentation.GameFragment">
 
     <TextView
         android:id="@+id/tv_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         android:text="@string/text_time"
-        android:textColor="@color/purple_700"
+        android:textColor="@color/white"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/cv_sum"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_sum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:backgroundTint="@color/purple_700"
-        android:elevation="16dp"
-        app:cardCornerRadius="200dp"
+        style="@style/StyleBackQuestion"
         app:layout_constraintBottom_toTopOf="@+id/cv_left_number"
         app:layout_constraintEnd_toEndOf="@+id/tv_timer"
         app:layout_constraintStart_toStartOf="@+id/tv_timer"
-        app:layout_constraintTop_toBottomOf="@+id/tv_timer">
+        app:layout_constraintTop_toTopOf="@+id/guideline8">
 
         <TextView
             android:id="@+id/tv_sum"
-            android:layout_width="176dp"
-            android:layout_height="176dp"
-            android:gravity="center"
             android:text="@string/_1"
-            android:textColor="@color/white"
-            android:textSize="80sp" />
+            style="@style/StyleTextQuestion" />
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_left_number"
+        style="@style/StyleBackQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="@color/teal_700"
-        android:elevation="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toStartOf="@+id/cv_question"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cv_sum">
 
         <TextView
             android:id="@+id/tv_left_number"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:gravity="center"
-            android:text="@string/_1"
-            android:textColor="@color/white"
-            android:textSize="80sp" />
+            style="@style/StyleTextQuestion"
+            android:text="@string/_1" />
 
     </androidx.cardview.widget.CardView>
 
@@ -71,24 +57,16 @@
         android:id="@+id/cv_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/teal_700"
-        android:elevation="16dp"
+        style="@style/StyleBackQuestion"
         app:layout_constraintBottom_toBottomOf="@+id/cv_left_number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cv_left_number"
         app:layout_constraintTop_toTopOf="@+id/cv_left_number">
 
         <TextView
             android:id="@+id/tv_question"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:gravity="center"
             android:text="@string/question_text"
-            android:textColor="@color/white"
-            android:textSize="80sp"
-            tools:layout_editor_absoluteX="163dp"
-            tools:layout_editor_absoluteY="184dp" />
+            style="@style/StyleTextQuestion" />
 
     </androidx.cardview.widget.CardView>
 
@@ -114,7 +92,6 @@
                 android:id="@+id/cv_option_1"
                 style="@style/OptionCVStyle"
                 android:layout_weight="1"
-                android:backgroundTint="@color/color_option_1"
                 tools:ignore="NestedWeights">
 
                 <TextView
@@ -126,8 +103,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_option_2"
                 style="@style/OptionCVStyle"
-                android:layout_weight="1"
-                android:backgroundTint="@color/color_option_2">
+                android:layout_weight="1">
 
                 <TextView
                     android:id="@+id/tv_option_2"
@@ -138,8 +114,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_option_3"
                 style="@style/OptionCVStyle"
-                android:layout_weight="1"
-                android:backgroundTint="@color/color_option_3">
+                android:layout_weight="1">
 
                 <TextView
                     android:id="@+id/tv_option_3"
@@ -160,7 +135,6 @@
                 android:id="@+id/cv_option_4"
                 style="@style/OptionCVStyle"
                 android:layout_weight="1"
-                android:backgroundTint="@color/color_option_4"
                 tools:ignore="NestedWeights">
 
                 <TextView
@@ -172,8 +146,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_option_5"
                 style="@style/OptionCVStyle"
-                android:layout_weight="1"
-                android:backgroundTint="@color/color_option_5">
+                android:layout_weight="1">
 
                 <TextView
                     android:id="@+id/tv_option_5"
@@ -184,8 +157,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_option_6"
                 style="@style/OptionCVStyle"
-                android:layout_weight="1"
-                android:backgroundTint="@color/color_option_6">
+                android:layout_weight="1">
 
                 <TextView
                     android:id="@+id/tv_option_6"
@@ -201,10 +173,11 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         android:weightSum="2"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cv_left_number">
+        app:layout_constraintTop_toTopOf="@+id/guideline9">
 
         <TextView
             android:id="@+id/tvAnswersProgress"
@@ -214,7 +187,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="@string/text_explanation_of_what_percentage_of_correct_answers"
-            android:textColor="@color/black"
+            android:textColor="@color/color_level_hard"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -231,4 +204,33 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

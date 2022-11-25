@@ -9,8 +9,8 @@
         android:name="com.baktiyar11.numbercomposition.presentation.WelcomeFragment"
         android:label="WelcomeFragment" >
         <action
-            android:id="@+id/action_welcomeFragment_to_chooseLevelFragment"
-            app:destination="@id/chooseLevelFragment" />
+            android:id="@+id/action_welcomeFragment_to_chooseTypeFragment"
+            app:destination="@id/chooseTypeFragment" />
     </fragment>
     <fragment
         android:id="@+id/chooseLevelFragment"
@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_chooseLevelFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
+        <argument
+            android:name="type"
+            app:argType="com.baktiyar11.numbercomposition.domain.entity.Type" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -32,8 +35,11 @@
         <action
             android:id="@+id/action_gameFragment_to_gameFinishFragment"
             app:destination="@id/gameFinishFragment"
-            app:popUpTo="@id/gameFragment"
+            app:popUpTo="@id/chooseLevelFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="type"
+            app:argType="com.baktiyar11.numbercomposition.domain.entity.Type" />
     </fragment>
     <fragment
         android:id="@+id/gameFinishFragment"
@@ -43,5 +49,14 @@
         <argument
             android:name="gameResult"
             app:argType="com.baktiyar11.numbercomposition.domain.entity.GameResult" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseTypeFragment"
+        android:name="com.baktiyar11.numbercomposition.presentation.ChooseTypeFragment"
+        android:label="fragment_choose_type"
+        tools:layout="@layout/fragment_choose_type" >
+        <action
+            android:id="@+id/action_chooseTypeFragment_to_chooseLevelFragment"
+            app:destination="@id/chooseLevelFragment" />
     </fragment>
 </navigation>

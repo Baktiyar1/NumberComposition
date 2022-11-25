@@ -27,16 +27,14 @@ class WelcomeFragment : Fragment() {
         action()
     }
 
-    private fun action() = binding.btnUnderstand.setOnClickListener {
-        launchChooseLevelFragment()
-    }
+    private fun action() = binding.btnUnderstand.setOnClickListener { launchChooseTypeFragment() }
 
-    private fun launchChooseLevelFragment() = findNavController()
-        .navigate(WelcomeFragmentDirections.actionWelcomeFragmentToChooseLevelFragment())
+    private fun launchChooseTypeFragment() {
+        findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToChooseTypeFragment())
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        layoutInflater
     }
 }

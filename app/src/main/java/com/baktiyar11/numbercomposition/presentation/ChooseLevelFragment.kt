@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.baktiyar11.numbercomposition.databinding.FragmentChooseLevelBinding
 import com.baktiyar11.numbercomposition.domain.entity.Level
 
 class ChooseLevelFragment : Fragment() {
 
+    private val args by navArgs<ChooseLevelFragmentArgs>()
     private var _binding: FragmentChooseLevelBinding? = null
     private val binding: FragmentChooseLevelBinding
         get() = _binding ?: throw RuntimeException("FragmentChooseLevelBinding == null")
@@ -29,15 +31,15 @@ class ChooseLevelFragment : Fragment() {
     }
 
     private fun chooseLevel() = binding.apply {
-        btnLevelTest.setOnClickListener { launchGameFragment(Level.TEST) }
-        btnLevelEasy.setOnClickListener { launchGameFragment(Level.EASY) }
-        btnLevelNormal.setOnClickListener { launchGameFragment(Level.NORMAL) }
-        btnLevelHard.setOnClickListener { launchGameFragment(Level.HARD) }
+        tvLevelTest.setOnClickListener { launchGameFragment(Level.TEST) }
+        tvLevelEasy.setOnClickListener { launchGameFragment(Level.EASY) }
+        tvLevelNormal.setOnClickListener { launchGameFragment(Level.NORMAL) }
+        tvLevelHard.setOnClickListener { launchGameFragment(Level.HARD) }
     }
 
     private fun launchGameFragment(level: Level) {
         findNavController().navigate(
-            ChooseLevelFragmentDirections.actionChooseLevelFragmentToGameFragment(level))
+            ChooseLevelFragmentDirections.actionChooseLevelFragmentToGameFragment(level, args.type))
     }
 
     override fun onDestroyView() {

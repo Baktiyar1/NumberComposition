@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.baktiyar11.numbercomposition.R
 import com.baktiyar11.numbercomposition.databinding.FragmentGameBinding
 import com.baktiyar11.numbercomposition.domain.entity.GameResult
 
@@ -71,9 +72,7 @@ class GameFragment : Fragment() {
             question.observe(viewLifecycleOwner) {
                 tvSum.text = it.sum.toString()
                 tvLeftNumber.text = it.visibleNumber.toString()
-                for (i in 0 until tvOptions.size) {
-                    tvOptions[i].text = it.options[i].toString()
-                }
+                for (i in 0 until tvOptions.size) tvOptions[i].text = it.options[i].toString()
             }
             percentOfRightAnswer.observe(viewLifecycleOwner) {
                 progressBar.setProgress(it, true)
@@ -87,14 +86,12 @@ class GameFragment : Fragment() {
             formattedTime.observe(viewLifecycleOwner) { tvTimer.text = it }
             minPercent.observe(viewLifecycleOwner) { progressBar.secondaryProgress = it }
             gameResult.observe(viewLifecycleOwner) { launchGameFinishedFragment(it) }
-            progressAnswer.observe(viewLifecycleOwner) { tvAnswersProgress.text = it }
-            startGame(level = args.level)
+            progressAnswer.observe(viewLifecycleOwner) {
+                tvAnswersProgress.text = String.format(requireContext().resources.getString(
+                    R.string.text_explanation_of_what_percentage_of_correct_answers), it[0], it[1])
+            }
+            startGame(level = args.level, type = args.type)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun getColorByState(goodState: Boolean): Int {
@@ -106,5 +103,10 @@ class GameFragment : Fragment() {
     private fun launchGameFinishedFragment(gameResult: GameResult) {
         findNavController().navigate(
             GameFragmentDirections.actionGameFragmentToGameFinishFragment(gameResult))
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
