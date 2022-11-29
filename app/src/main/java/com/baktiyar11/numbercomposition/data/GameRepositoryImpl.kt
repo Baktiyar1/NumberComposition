@@ -15,7 +15,7 @@ class GameRepositoryImpl : GameRepository {
     private var visibleNumber = 1
 
     override fun generateQuestion(maxSumValue: Int, countOfOptions: Int, type: Type): Question {
-        sum = Random.nextInt(MIN_SUM_VALUE, maxSumValue+1)
+        sum = Random.nextInt(MIN_SUM_VALUE, maxSumValue + 1)
         val rightAnswer = when (type) {
             Type.PLUS -> generatePlusRightAnswer()
             Type.MINUS -> generateMinusRightAnswer(maxSumValue)
@@ -47,8 +47,8 @@ class GameRepositoryImpl : GameRepository {
     }
 
     private fun generateDivisionRightAnswer(maxSumValue: Int): Int {
-        sum = Random.nextInt(MIN_SUM_VALUE, maxSumValue / 2)
-        visibleNumber = Random.nextInt(sum, maxSumValue+1)
+        sum = Random.nextInt(MIN_ANSWER_VALUE, maxSumValue / 2)
+        visibleNumber = Random.nextInt(sum, maxSumValue + 1)
         if ((visibleNumber / sum.toDouble()) % 1 != 0.0) generateDivisionRightAnswer(maxSumValue)
         return (visibleNumber / sum)
     }

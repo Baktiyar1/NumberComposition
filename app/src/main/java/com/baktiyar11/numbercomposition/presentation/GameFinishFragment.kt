@@ -52,12 +52,12 @@ class GameFinishFragment : Fragment() {
     private fun getPercentOfRightAnswers() = if (args.gameResult.countOfQuestions == 0) 0
     else ((args.gameResult.countOfRightAnswer / args.gameResult.countOfQuestions.toDouble()) * 100).toInt()
 
+    private fun retryGame() = binding.btnRetry.setOnClickListener {
+        findNavController().popBackStack()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun retryGame() = binding.btnRetry.setOnClickListener {
-        findNavController().popBackStack()
     }
 }

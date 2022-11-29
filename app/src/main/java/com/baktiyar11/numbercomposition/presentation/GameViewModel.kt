@@ -93,7 +93,6 @@ class GameViewModel : ViewModel() {
             override fun onTick(millisUntilFinished: Long) {
                 _formattedTime.value = formatTime(millisUntilFinished)
             }
-
             override fun onFinish() {
                 finishGame()
             }
