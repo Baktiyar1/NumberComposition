@@ -1,4 +1,4 @@
-package com.baktiyar11.data
+package com.baktiyar11.numbercomposition
 
 import org.junit.Test
 

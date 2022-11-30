@@ -1,13 +1,9 @@
 package com.baktiyar11.numbercomposition.domain.entity
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-
-@Parcelize
-data class GameSettings(
+data class GameSettingsDomain(
     val maxSumValue: Int, val minCountOfRightAnswers: Int,
     val minPercentOfRightAnswers: Int, val gameTimeInSecond: Int,
-) : Parcelable
+)
 
 // Но это все не важно. Потому-что можно просто в plugins добавить "id 'kotlin-parcelize',
 // после этого добавить анатацию Parcelize в классе и всё мать вашу

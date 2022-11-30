@@ -1,9 +1,9 @@
 package com.baktiyar11.numbercomposition.data
 
-import com.baktiyar11.numbercomposition.domain.entity.GameSettings
-import com.baktiyar11.numbercomposition.domain.entity.Level
+import com.baktiyar11.numbercomposition.domain.entity.GameSettingsDomain
+import com.baktiyar11.numbercomposition.domain.entity.LevelDomain
 import com.baktiyar11.numbercomposition.domain.entity.Question
-import com.baktiyar11.numbercomposition.domain.entity.Type
+import com.baktiyar11.numbercomposition.domain.entity.TypeDomain
 import com.baktiyar11.numbercomposition.domain.repsitory.GameRepository
 import kotlin.math.max
 import kotlin.math.min
@@ -14,13 +14,13 @@ class GameRepositoryImpl : GameRepository {
     private var sum = 1
     private var visibleNumber = 1
 
-    override fun generateQuestion(maxSumValue: Int, countOfOptions: Int, type: Type): Question {
+    override fun generateQuestion(maxSumValue: Int, countOfOptions: Int, type: TypeDomain): Question {
         sum = Random.nextInt(MIN_SUM_VALUE, maxSumValue + 1)
         val rightAnswer = when (type) {
-            Type.PLUS -> generatePlusRightAnswer()
-            Type.MINUS -> generateMinusRightAnswer(maxSumValue)
-            Type.MULTI -> generateMultiRightAnswer()
-            Type.DIVISION -> generateDivisionRightAnswer(maxSumValue)
+            TypeDomain.PLUS -> generatePlusRightAnswer()
+            TypeDomain.MINUS -> generateMinusRightAnswer(maxSumValue)
+            TypeDomain.MULTI -> generateMultiRightAnswer()
+            TypeDomain.DIVISION -> generateDivisionRightAnswer(maxSumValue)
         }
         val options = HashSet<Int>()
         options.add(rightAnswer)
@@ -53,14 +53,14 @@ class GameRepositoryImpl : GameRepository {
         return (visibleNumber / sum)
     }
 
-    override fun getGameSettings(level: Level): GameSettings = when (level) {
-        Level.TEST -> GameSettings(maxSumValue = 10,
+    override fun getGameSettings(level: LevelDomain): GameSettingsDomain = when (level) {
+        LevelDomain.TEST -> GameSettingsDomain(maxSumValue = 10,
             minCountOfRightAnswers = 3, minPercentOfRightAnswers = 70, gameTimeInSecond = 8)
-        Level.EASY -> GameSettings(maxSumValue = 10,
+        LevelDomain.EASY -> GameSettingsDomain(maxSumValue = 10,
             minCountOfRightAnswers = 10, minPercentOfRightAnswers = 70, gameTimeInSecond = 30)
-        Level.NORMAL -> GameSettings(maxSumValue = 20,
+        LevelDomain.NORMAL -> GameSettingsDomain(maxSumValue = 20,
             minCountOfRightAnswers = 20, minPercentOfRightAnswers = 80, gameTimeInSecond = 45)
-        Level.HARD -> GameSettings(maxSumValue = 30,
+        LevelDomain.HARD -> GameSettingsDomain(maxSumValue = 30,
             minCountOfRightAnswers = 30, minPercentOfRightAnswers = 90, gameTimeInSecond = 60)
     }
 

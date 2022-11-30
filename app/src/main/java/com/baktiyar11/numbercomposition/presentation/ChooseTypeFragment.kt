@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.baktiyar11.numbercomposition.databinding.FragmentChooseTypeBinding
-import com.baktiyar11.numbercomposition.domain.entity.Type
+import com.baktiyar11.numbercomposition.domain.entity.TypeDomain
 
 class ChooseTypeFragment : Fragment() {
 
@@ -29,13 +29,14 @@ class ChooseTypeFragment : Fragment() {
     }
 
     private fun chooseType() = binding.apply {
-        btnTypePlus.setOnClickListener { launchChooseLevelFragment(Type.PLUS) }
-        btnTypeMinus.setOnClickListener { launchChooseLevelFragment(Type.MINUS) }
-        btnTypeMultiplication.setOnClickListener { launchChooseLevelFragment(Type.MULTI) }
-        btnTypeDivision.setOnClickListener { launchChooseLevelFragment(Type.DIVISION) }
+        btnTypePlus.setOnClickListener { launchChooseLevelFragment(TypeDomain.PLUS) }
+        btnTypeMinus.setOnClickListener { launchChooseLevelFragment(TypeDomain.MINUS) }
+        btnTypeMultiplication.setOnClickListener { launchChooseLevelFragment(TypeDomain.MULTI) }
+        btnTypeDivision.setOnClickListener { launchChooseLevelFragment(TypeDomain.DIVISION) }
+
     }
 
-    private fun launchChooseLevelFragment(type: Type) {
+    private fun launchChooseLevelFragment(type: TypeDomain) {
         findNavController().navigate(
             ChooseTypeFragmentDirections.actionChooseTypeFragmentToChooseLevelFragment(type))
     }

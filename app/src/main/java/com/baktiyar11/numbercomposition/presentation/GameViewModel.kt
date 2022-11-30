@@ -8,12 +8,13 @@ import com.baktiyar11.numbercomposition.data.GameRepositoryImpl
 import com.baktiyar11.numbercomposition.domain.entity.*
 import com.baktiyar11.numbercomposition.domain.usecase.GenerateQuestionUseCase
 import com.baktiyar11.numbercomposition.domain.usecase.GetGameSettingsUseCase
+import com.baktiyar11.numbercomposition.entity.GameResult
 
 class GameViewModel : ViewModel() {
 
-    private lateinit var gameSettings: GameSettings
-    private lateinit var level: Level
-    private lateinit var type: Type
+    private lateinit var gameSettings: GameSettingsDomain
+    private lateinit var level: LevelDomain
+    private lateinit var type: TypeDomain
     private var timer: CountDownTimer? = null
 
     private val repository = GameRepositoryImpl()
@@ -48,7 +49,7 @@ class GameViewModel : ViewModel() {
     private var countOfRightAnswer = 0
     private var countOfQuestion = 0
 
-    fun startGame(level: Level, type: Type) {
+    fun startGame(level: LevelDomain, type: TypeDomain) {
         this.level = level
         this.type = type
         getGameSettings()
@@ -112,8 +113,8 @@ class GameViewModel : ViewModel() {
     }
 
     private fun finishGame() {
-        _gameResult.value = GameResult(enoughCount.value == true && enoughPercent.value == true,
-            countOfRightAnswer, countOfQuestion, gameSettings)
+        _gameResult.value = GameResult.mapGameResult(GameResultDomain(enoughCount.value == true &&
+                enoughPercent.value == true, countOfRightAnswer, countOfQuestion, gameSettings))
     }
 
     override fun onCleared() {

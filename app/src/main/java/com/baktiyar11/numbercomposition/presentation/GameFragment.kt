@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.baktiyar11.numbercomposition.R
 import com.baktiyar11.numbercomposition.databinding.FragmentGameBinding
-import com.baktiyar11.numbercomposition.domain.entity.GameResult
+import com.baktiyar11.numbercomposition.entity.GameResult
 
 class GameFragment : Fragment() {
 
@@ -42,14 +42,12 @@ class GameFragment : Fragment() {
             add(binding.cvOption6)
         }
     }
-
     private var _binding: FragmentGameBinding? = null
     private val binding: FragmentGameBinding
         get() = _binding ?: throw RuntimeException("FragmentGameBinding == null")
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentGameBinding.inflate(inflater, container, false)
         return binding.root

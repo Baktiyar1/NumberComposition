@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.baktiyar11.numbercomposition.databinding.FragmentChooseLevelBinding
-import com.baktiyar11.numbercomposition.domain.entity.Level
+import com.baktiyar11.numbercomposition.domain.entity.LevelDomain
 
 class ChooseLevelFragment : Fragment() {
 
@@ -18,8 +18,7 @@ class ChooseLevelFragment : Fragment() {
         get() = _binding ?: throw RuntimeException("FragmentChooseLevelBinding == null")
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentChooseLevelBinding.inflate(inflater, container, false)
         return binding.root
@@ -31,13 +30,14 @@ class ChooseLevelFragment : Fragment() {
     }
 
     private fun chooseLevel() = binding.apply {
-        tvLevelTest.setOnClickListener { launchGameFragment(Level.TEST) }
-        tvLevelEasy.setOnClickListener { launchGameFragment(Level.EASY) }
-        tvLevelNormal.setOnClickListener { launchGameFragment(Level.NORMAL) }
-        tvLevelHard.setOnClickListener { launchGameFragment(Level.HARD) }
+        tvLevelTest.setOnClickListener { launchGameFragment(LevelDomain.TEST) }
+        tvLevelEasy.setOnClickListener { launchGameFragment(LevelDomain.EASY) }
+        tvLevelNormal.setOnClickListener { launchGameFragment(LevelDomain.NORMAL) }
+        tvLevelHard.setOnClickListener { launchGameFragment(LevelDomain.HARD) }
+
     }
 
-    private fun launchGameFragment(level: Level) {
+    private fun launchGameFragment(level: LevelDomain) {
         findNavController().navigate(
             ChooseLevelFragmentDirections.actionChooseLevelFragmentToGameFragment(level, args.type))
     }
